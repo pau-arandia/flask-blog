@@ -8,15 +8,19 @@ This file serves double duty:
 The __init__.py file is a special file placed within directories that Python interprets as packages. 
 Its presence allows Python to recognize the directory as a package, enabling the import of modules and sub-packages.
 
-TESTING
-Set environment variables for testing:
-    While on root directory (/flask-blog)> set FLASK_APP=flaskr\__init__.py
-    
-    This is equivalent to telling Flask where to find the application
 
+TESTING
+1. Set environment variables for testing:
+        While on root directory (/flask-blog)>      set FLASK_APP=flaskr\__init__.py
     
-Run the Flask app in debug mode:
-    While on root directory (/flask-blog)> flask run --debug
+        This is equivalent to telling Flask where to find the application.
+    
+2. Run the Flask app in debug mode:
+        While on root directory (/flask-blog)>      flask run --debug
+
+
+An alternative way to combine the last two steps is with the following command:
+        While on root directory (/flask-blog)>      flask --app flaskr run --debug
 
 '''
 
@@ -28,7 +32,7 @@ from flask import Flask
 def create_app(test_config=None):
 
     '''
-    create_app()
+    create_app() is the APPLICATION FACTORY FUNCTION
 
     This function is known as the 'application factory'. 
     Any configuration, registration, and other setup the application needs 
@@ -39,7 +43,9 @@ def create_app(test_config=None):
     # create and configure the app by creating a Flask instance called 'app'
     app = Flask(__name__, instance_relative_config=True)
 
-    # set some default configuration that the app will use
+    # set some default configuration that the app will use.
+    # the file that 'DATABASE' points to is connected to the database. this file doesn’t have to exist yet, 
+    # and won’t until you initialize the database later, in the 'sqlite3.connect()' line.
     app.config.from_mapping(
         SECRET_KEY = 'dev',
         DATABASE = os.path.join(app.instance_path, 'flaskr.sqlite'),
@@ -66,5 +72,12 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+
+    ###########################################################################################################
+
+    # import and call the 'init_app()' function defined in db.py
+    from . import db
+    db.init_app(app)
 
     return app
