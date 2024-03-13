@@ -85,6 +85,7 @@ def register():
 
 
     # 'render_template()' will render a template containing the HTML.
+    # The template files will be stored in the '/templates' directory inside the '/flaskr' package.
     return render_template('auth/register.html')
 
 
@@ -150,6 +151,7 @@ def login():
 
 
     # 'render_template()' will render a template containing the HTML.
+    # The template files will be stored in the '/templates' directory inside the '/flaskr' package.
     return render_template('auth/login.html')
 
 
