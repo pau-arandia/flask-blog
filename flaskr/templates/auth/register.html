@@ -7,10 +7,10 @@
 
     -----------------------------------------------------------------------------------------------------------------------
 
-    {% extends 'base.html' %} tells Jinja that this template should replace the blocks from the base template. 
-    All the rendered content must appear inside {% block %} tags that override blocks from the base template.
+    The command "extends 'base.html'" tells Jinja that this template should replace the blocks from the base template. 
+    All the rendered content must appear inside 'block' tags that override blocks from the base template.
 
-    A useful pattern used here is to place {% block title %} inside {% block header %}. 
+    A useful pattern used here is to place the 'block title' section inside the 'block header' section. 
     This will set the title block and then output the value of it into the header block, 
     so that both the window and page share the same title without writing it twice.
 

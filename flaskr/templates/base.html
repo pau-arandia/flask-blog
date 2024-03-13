@@ -15,13 +15,23 @@
 
     There are three blocks defined here that will be overridden in the other templates:
 
-    * {% block title %} will change the title displayed in the browser’s tab and window title.
-    * {% block header %} is similar to title but will change the title displayed on the page.
-    * {% block content %} is where the content of each page goes, such as the login form or a blog post.
+    * The 'block title' section will change the title displayed in the browser’s tab and window title.
+    * The 'block header' section is similar to title but will change the title displayed on the page.
+    * The 'block content' section is where the content of each page goes, such as the login form or a blog post.
 
     The base template is directly in the '/templates' directory. 
     To keep the others organized, the templates for a blueprint will be placed in a directory 
     with the same name as the blueprint.
+
+    -------------------------- NOTE --------------------------
+    DO NOT use HTML notation inside a comment. HTML still interprets HTML syntax even if it is inside a comment.
+
+    If you have HTML comments around a 'block content' written in HTML syntax -- using the { and % notation --, 
+    it doesn't really get commented and HTML still interprets it as code.
+
+    https://stackoverflow.com/a/54035534/12872300
+    ----------------------------------------------------------
+
 -->
 
 <!doctype html>
