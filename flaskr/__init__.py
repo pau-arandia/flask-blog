@@ -102,12 +102,16 @@ def create_app(test_config=None):
 
     Flaskr will have two blueprints:
     - one for authentication functions: 'auth'
-    - one for the blog posts functions: 
+    - one for the blog posts functions: 'blog'
 
     The code for each blueprint is located in a separate module. 
     '''
 
     from . import auth
     app.register_blueprint(auth.bp)
+
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
